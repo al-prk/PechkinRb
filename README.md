@@ -1,6 +1,8 @@
-# Pechkinrb
+# PechkinRb
 
 This gem provides you with easy Ruby interface for pechkin-mail.ru mail service.
+
+Documentation available at http://www.rubydoc.info/github/crsde/PechkinRb
 
 ## Installation
 
