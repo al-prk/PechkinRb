@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Pechkinrb::VERSION
   spec.authors       = ["Alexandr Prokopenko"]
   spec.email         = ["prokopenko@igc.ru"]
-  spec.summary       = %q{Interface for pechkin-mailer.ru service API}
-  spec.description   = %q{Interface for pechkin-mailer.ru service API}
-  spec.homepage      = ""
+  spec.summary       = %q{Interface for pechkin-mail.ru service API}
+  spec.description   = %q{Interface for pechkin-mail.ru service API}
+  spec.homepage      = "https://github.com/crsde/PechkinRb"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

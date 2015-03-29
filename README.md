@@ -1,6 +1,6 @@
 # Pechkinrb
 
-TODO: Write a gem description
+This gem provides you with easy Ruby interface for pechkin-mail.ru mail service.
 
 ## Installation
 
@@ -18,7 +18,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    require "pechkinrb"
+    conn = Pechkin::Connection.new('login', 'password')
+    conn.lists # => Array of Pechkin::List instances
+
 
 ## Contributing
 
