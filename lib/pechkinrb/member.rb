@@ -21,6 +21,10 @@ module Pechkin
       attr_reader f
     end
 
+    # Initialize new member instance
+    #
+    # @param connection [Pachkin::Connection] Active connection
+    # @param doc [Hash] API object data
     def initialize(connection, doc)
       super(connection, doc)
       FIELDS.each do |field|
@@ -28,14 +32,22 @@ module Pechkin
       end
     end
 
+    # Invokes 'lists.delete_member' API method
+    #
     def delete_member
       connection.call_method('lists.delete_member', id_params)
     end
 
+    # Invokes 'lists.update_member' API method
+    #
+    # @param params [Hash] Params to be passed
     def update_member(params)
       connection.call_method('lists.update_member', params.merge(id_params))
     end
 
+    # Invokes 'lists.get_lists' API method to retrieve member list
+    #
+    # @return params [Pechkin::List] List instance, accosiated with member
     def list
       connection.get_list(list_id)
     end

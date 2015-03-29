@@ -1,4 +1,5 @@
 module Pechkin
+  # Mailing list representation class
   class List < Model
     attr_reader :raw
 
@@ -21,6 +22,10 @@ module Pechkin
       attr_reader f
     end
 
+    # Initialize new list instance
+    #
+    # @param connection [Pachkin::Connection] Active connection
+    # @param doc [Hash] API object data
     def initialize(connection, doc)
       super(connection, doc)
       FIELDS.each do |field|
@@ -28,6 +33,10 @@ module Pechkin
       end
     end
 
+    # Invokes 'lists.get_members' API method to retreive list members
+    #
+    # @param params [Hash] Params to be passed
+    # @return [Array] Array of Pechkin::Members instances
     def get_members(params = {})
       connection.call_method('lists.get_members', params.merge(id_params)).map {|member| Pechkin::Member.new(connection, member)}
     end
