@@ -47,9 +47,17 @@ module Pechkin
 
     # Invokes 'lists.get_lists' API method to retrieve member list
     #
-    # @return params [Pechkin::List] List instance, accosiated with member
+    # @param params [Pechkin::List] List instance, accosiated with member
     def list
       connection.get_list(list_id)
+    end
+
+    # Invokes 'lists.unsubscribe_member' API method
+    #
+    # @param params [Hash] Params to be passed
+    # @return [Fixnum] Count of unsubscribed members
+    def unsubscribe_member(params)
+      connection.call_method('lists.unsubscribe_member', params.merge(id_params))['unsubscribed']
     end
 
     private

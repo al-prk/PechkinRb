@@ -30,7 +30,7 @@ module Pechkin
     # @param method [String] Method name, corresponding API reference https://pechkin-mail.ru/api/
     # @param params [Hash] Params to be passed
     def call_method(method, params = {})
-      response = connection.post '/', {method: method}.merge(credentials).merge(params)      
+      response = connection.post '/', {method: method}.merge(credentials).merge(params)
       err_code = response.body["response"]["msg"]["err_code"]
       unless err_code == 0
         raise Pechkin::ApiException.new(response.body["response"]["msg"]["text"])
@@ -46,6 +46,7 @@ module Pechkin
       call_method('lists.get', params).map {|list_raw| Pechkin::List.new(self, list_raw)}
     end
 
+
     # Invokes 'lists.get' API method to retrieve single List object
     #
     # @param id [Fixnum] List id
@@ -54,12 +55,24 @@ module Pechkin
       lists(list_id: id)[0]
     end
 
+    # 'list.get' method alias
+    #
+    alias_method :get, :lists
+
     # Invokes 'lists.get_member' API method
     #
     # @param email [String] Email for search
     # @return [Array] Array of Pechkin::Member instances
     def get_member(email)
       call_method('lists.get_member', {email: email}).map {|member| Pechkin::Member.new(connection, member)}
+    end
+
+    # Invokes 'lists.unsubscribe_member' API method
+    #
+    # @param params [Hash] Params to be passed
+    # @return [Fixnum] Count of unsubscribed members
+    def unsubscribe_member(params)
+      call_method('lists.unsubscribe_member', params)['unsubscribed']
     end
 
   private

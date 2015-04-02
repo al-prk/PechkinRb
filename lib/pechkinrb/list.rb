@@ -41,6 +41,27 @@ module Pechkin
       connection.call_method('lists.get_members', params.merge(id_params)).map {|member| Pechkin::Member.new(connection, member)}
     end
 
+    # Alias to get_members
+    #
+    alias_method :members, :get_members
+
+    # Invokes 'lists.add_memner' method
+    #
+    # @param params [Hash] Params to be passed
+    # @return [Pechkin::Member] New member instance
+    def add_member
+      added = connection.call_method('lists.add_member', params.merge(id_params))
+      get_members(added).first
+    end
+
+    # Invokes 'lists.unsubscribe_member' API method
+    #
+    # @param params [Hash] Params to be passed
+    # @return [Fixnum] Count of unsubscribed members
+    def unsubscribe_member(params)
+      connection.call_method('lists.unsubscribe_member', params.merge(id_params))['unsubscribed']
+    end
+
     private
 
     def id_params
