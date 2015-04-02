@@ -1,6 +1,10 @@
-# Pechkinrb
+# PechkinRb
+
+[![Code Climate](https://codeclimate.com/github/crsde/PechkinRb/badges/gpa.svg)](https://codeclimate.com/github/crsde/PechkinRb)
 
 This gem provides you with easy Ruby interface for pechkin-mail.ru mail service.
+
+Documentation available at http://www.rubydoc.info/github/crsde/PechkinRb
 
 ## Installation
 
@@ -25,7 +29,7 @@ Or install it yourself as:
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/pechkinrb/fork )
+1. Fork it ( https://github.com/crsde/PechkinRb/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
