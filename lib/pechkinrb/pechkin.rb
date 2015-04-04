@@ -32,10 +32,15 @@ module Pechkin
     def call_method(method, params = {})
       response = connection.post '/', {method: method}.merge(credentials).merge(params)
       err_code = response.body["response"]["msg"]["err_code"]
-      unless err_code == 0
+
+      case err_code
+      when 0
+        response.body["response"]["data"]
+      when 4
+        raise Pechkin::NoDataException.new(response.body["response"]["msg"]["text"])
+      else
         raise Pechkin::ApiException.new(response.body["response"]["msg"]["text"])
       end
-      response.body["response"]["data"]
     end
 
     # Invokes 'lists.get' API method

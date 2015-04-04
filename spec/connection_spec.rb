@@ -28,6 +28,16 @@ describe Pechkin::Connection do
               }
           }]
         end
+
+        stubs.post("/", {username: '1', password: '2', method: 'get_none', param: 'value'} ) do
+          [200, {}, {
+            'response' =>
+              {
+                'msg' => { 'text' => "Error", 'err_code' => 4 },
+                'data' => { 'ok' => "ok" }
+              }
+          }]
+        end
       end
     end
 
@@ -41,6 +51,10 @@ describe Pechkin::Connection do
 
     it "raises error when bad response received" do
       expect { connection.call_method('get_bad', {param: 'value'}) }.to raise_error(Pechkin::ApiException)
+    end
+
+    it "raises no_data error when bad response received" do
+      expect { connection.call_method('get_none', {param: 'value'}) }.to raise_error(Pechkin::NoDataException)
     end
   end
 end
