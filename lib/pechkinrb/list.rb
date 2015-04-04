@@ -49,7 +49,7 @@ module Pechkin
     #
     # @param params [Hash] Params to be passed
     # @return [Pechkin::Member] New member instance
-    def add_member
+    def add_member(params)
       added = connection.call_method('lists.add_member', params.merge(id_params))
       get_members(added).first
     end
