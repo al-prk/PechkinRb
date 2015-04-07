@@ -1,6 +1,6 @@
 # PechkinRb
 
-[![Code Climate](https://codeclimate.com/github/crsde/PechkinRb/badges/gpa.svg)](https://codeclimate.com/github/crsde/PechkinRb)
+[![Code Climate](https://codeclimate.com/github/crsde/PechkinRb/badges/gpa.svg)](https://codeclimate.com/github/crsde/PechkinRb) [![Gem Version](https://badge.fury.io/rb/pechkinrb.svg)](http://badge.fury.io/rb/pechkinrb)
 
 This gem provides you with simple Ruby interface for pechkin-mail.ru mail service.
 
