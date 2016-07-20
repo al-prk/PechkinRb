@@ -10,15 +10,18 @@ module Pechkin
     #
     # @param username [String] Service username
     # @param password [String] Password
-    def initialize(username, password)
+    def initialize(username, password, endpoint = API_URL)
       @username, @password = username, password
+      @endpoint = endpoint
     end
+
+    attr_reader :endpoint
 
     # Memoized Faraday connection factory
     #
     # @return Faraday connection instance
     def connection
-      @conn ||= Faraday.new(:url => 'https://api.pechkin-mail.ru') do |faraday|
+      @conn ||= Faraday.new(:url => endpoint) do |faraday|
         faraday.request  :url_encoded
         faraday.response :json
         faraday.adapter  Faraday.default_adapter

@@ -32,6 +32,11 @@ PechkinRb declares some classes for API objects, like *List*, *Member*, etc
     conn = Pechkin::Connection.new('login', 'password')
     conn.lists # => Array of Pechkin::List instances
 
+Optionally you can additionally pass third parameter to Pechkin::Connection constructor, to change API url (for example if you plan to use compatible service):
+
+    conn = Pechkin::Connection.new('login', 'password', 'https://api.pechkin-mail.ru')
+
+
 Also, you can use universal invocation method with *#call_method*
 
     conn.call_method('lists.get_members', list_id: 1)
