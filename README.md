@@ -1,8 +1,12 @@
 # DashaMailRb
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/DashaMailRb`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem provides you with simple Ruby interface for Dashamail.ru ESP.
 
-TODO: Delete this and the text above, and describe your gem
+Documentation available at https://www.rubydoc.info/github/Dashamail/DashamailRb
+
+Original API documentation https://dashamail.ru/api/
+
+At this moment, mainly list management features implemented, but there are common way to call any API method, using *#call_method*
 
 ## Installation
 
@@ -22,22 +26,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+DashamailRb declares some classes for API objects, like *List*, *Member*, etc
 
-## Development
+require "DashaMailRb"
+conn = Dashamail::Connection.new('login', 'password')
+conn.lists # => Array of Dashamail::List instances
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Optionally you can additionally pass third parameter to Dashamail::Connection constructor, to change API url (for example if you plan to use compatible service):
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+conn = Dashamail::Connection.new('login', 'password', 'https://api.dashamail.com')
+
+
+Also, you can use universal invocation method with *#call_method*
+
+conn.call_method('lists.get_members', list_id: 1)
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/DashaMailRb. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the DashaMailRb project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/DashaMailRb/blob/master/CODE_OF_CONDUCT.md).
+1. Fork it ( https://github.com/DashaMail/DashamailRb )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
