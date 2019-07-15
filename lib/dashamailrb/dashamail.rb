@@ -1,10 +1,10 @@
 require 'faraday'
 require 'faraday_middleware'
 
-module Pechkin
+module Dashamail
   class Connection
 
-    API_URL = 'https://api.pechkin-mail.ru'
+    API_URL = 'https://api.dashamail.com'
 
     # Initializes new connection instance
     #
@@ -30,7 +30,7 @@ module Pechkin
 
     # Invokes API method by name
     #
-    # @param method [String] Method name, corresponding API reference https://pechkin-mail.ru/api/
+    # @param method [String] Method name, corresponding API reference https://dashamail.ru/api/
     # @param params [Hash] Params to be passed
     def call_method(method, params = {})
       response = connection.post '/', {method: method}.merge(credentials).merge(params)
@@ -40,25 +40,25 @@ module Pechkin
       when 0
         response.body["response"]["data"]
       when 4
-        raise Pechkin::NoDataException.new(response.body["response"]["msg"]["text"])
+        raise Dashamail::NoDataException.new(response.body["response"]["msg"]["text"])
       else
-        raise Pechkin::ApiException.new(response.body["response"]["msg"]["text"])
+        raise Dashamail::ApiException.new(response.body["response"]["msg"]["text"])
       end
     end
 
     # Invokes 'lists.get' API method
     #
     # @param params [Hash] Params to be passed
-    # @return [Array] Array of Pechkin::List instances
+    # @return [Array] Array of Dashamail::List instances
     def lists(params = {})
-      call_method('lists.get', params).map {|list_raw| Pechkin::List.new(self, list_raw)}
+      call_method('lists.get', params).map {|list_raw| Dashamail::List.new(self, list_raw)}
     end
 
 
     # Invokes 'lists.get' API method to retrieve single List object
     #
     # @param id [Fixnum] List id
-    # @return [Pechkin::List] List instance
+    # @return [Dashamail::List] List instance
     def get_list(id)
       lists(list_id: id)[0]
     end
@@ -70,9 +70,9 @@ module Pechkin
     # Invokes 'lists.get_member' API method
     #
     # @param email [String] Email for search
-    # @return [Array] Array of Pechkin::Member instances
+    # @return [Array] Array of Dashamail::Member instances
     def get_member(email)
-      call_method('lists.get_member', {email: email}).map {|member| Pechkin::Member.new(connection, member)}
+      call_method('lists.get_member', {email: email}).map {|member| Dashamail::Member.new(connection, member)}
     end
 
     # Invokes 'lists.unsubscribe_member' API method

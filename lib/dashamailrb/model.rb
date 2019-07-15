@@ -1,4 +1,4 @@
-module Pechkin
+module Dashamail
   # Basic class for API model objects
   class Model
 
@@ -7,7 +7,7 @@ module Pechkin
 
     # Initialize new model instance
     #
-    # @param connection [Pachkin::Connection] Active connection
+    # @param connection [Dashamail::Connection] Active connection
     # @param doc [Hash] API object data
     def initialize(connection, doc)
       @connection = connection

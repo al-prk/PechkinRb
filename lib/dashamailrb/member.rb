@@ -1,4 +1,4 @@
-module Pechkin
+module Dashamail
   class Member < Model
     attr_reader :raw
 
@@ -47,7 +47,7 @@ module Pechkin
 
     # Invokes 'lists.get_lists' API method to retrieve member list
     #
-    # @param params [Pechkin::List] List instance, accosiated with member
+    # @param params [Dashamail::List] List instance, accosiated with member
     def list
       connection.get_list(list_id)
     end

@@ -1,12 +1,12 @@
-# PechkinRb
+# DashamailRb
 
-[![Code Climate](https://codeclimate.com/github/crsde/PechkinRb/badges/gpa.svg)](https://codeclimate.com/github/crsde/PechkinRb) [![Gem Version](https://badge.fury.io/rb/pechkinrb.svg)](http://badge.fury.io/rb/pechkinrb)
+[![Code Climate](https://codeclimate.com/github/crsde/dashamailRb/badges/gpa.svg)](https://codeclimate.com/github/crsde/dashamailRb) [![Gem Version](https://badge.fury.io/rb/dashamailrb.svg)](http://badge.fury.io/rb/dashamailrb)
 
-This gem provides you with simple Ruby interface for pechkin-mail.ru mail service.
+This gem provides you with simple Ruby interface for dashamail.ru mail service.
 
-Documentation available at http://www.rubydoc.info/github/crsde/PechkinRb
+Documentation available at https://github.com/DashaMail/DashamailRb
 
-Original API documentation https://pechkin-mail.ru/api/
+Original API documentation https://dashamail.ru/api/
 
 At this moment, mainly list management features implemented, but there are common way to call any API method, using *#call_method*
 
@@ -14,7 +14,7 @@ At this moment, mainly list management features implemented, but there are commo
 
 Add this line to your application's Gemfile:
 
-    gem 'pechkinrb'
+    gem 'dashamailrb'
 
 And then execute:
 
@@ -22,19 +22,19 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install pechkinrb
+    $ gem install dashamailrb
 
 ## Usage
 
-PechkinRb declares some classes for API objects, like *List*, *Member*, etc
+dashamailRb declares some classes for API objects, like *List*, *Member*, etc
 
-    require "pechkinrb"
-    conn = Pechkin::Connection.new('login', 'password')
-    conn.lists # => Array of Pechkin::List instances
+    require "dashamailrb"
+    conn = Dashamail::Connection.new('login', 'password')
+    conn.lists # => Array of Dashamail::List instances
 
-Optionally you can additionally pass third parameter to Pechkin::Connection constructor, to change API url (for example if you plan to use compatible service):
+Optionally you can additionally pass third parameter to dashamail::Connection constructor, to change API url (for example if you plan to use compatible service):
 
-    conn = Pechkin::Connection.new('login', 'password', 'https://api.pechkin-mail.ru')
+    conn = dashamail::Connection.new('login', 'password', 'https://api.dashamail.com')
 
 
 Also, you can use universal invocation method with *#call_method*
@@ -43,7 +43,7 @@ Also, you can use universal invocation method with *#call_method*
 
 ## Contributing
 
-1. Fork it ( https://github.com/crsde/PechkinRb/fork )
+1. Fork it ( https://github.com/DashaMail/DashamailRb )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

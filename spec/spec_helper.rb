@@ -1,7 +1,7 @@
 require 'bundler/setup'
 Bundler.setup
 
-require 'pechkinrb'
+require 'dashamailrb'
 
 RSpec.configure do |config|
   

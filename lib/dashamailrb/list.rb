@@ -1,4 +1,4 @@
-module Pechkin
+module Dashamail
   # Mailing list representation class
   class List < Model
     attr_reader :raw
@@ -36,9 +36,9 @@ module Pechkin
     # Invokes 'lists.get_members' API method to retreive list members
     #
     # @param params [Hash] Params to be passed
-    # @return [Array] Array of Pechkin::Members instances
+    # @return [Array] Array of Dashamail::Members instances
     def get_members(params = {})
-      connection.call_method('lists.get_members', params.merge(id_params)).map {|member| Pechkin::Member.new(connection, member)}
+      connection.call_method('lists.get_members', params.merge(id_params)).map {|member| Dashamail::Member.new(connection, member)}
     end
 
     # Alias to get_members
@@ -48,7 +48,7 @@ module Pechkin
     # Invokes 'lists.add_memner' method
     #
     # @param params [Hash] Params to be passed
-    # @return [Pechkin::Member] New member instance
+    # @return [Dashamail::Member] New member instance
     def add_member(params)
       added = connection.call_method('lists.add_member', params.merge(id_params))
       get_members(added).first

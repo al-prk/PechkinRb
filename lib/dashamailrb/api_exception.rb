@@ -1,4 +1,4 @@
-module Pechkin
+module Dashamail
   class ApiException < StandardError
   end
 
