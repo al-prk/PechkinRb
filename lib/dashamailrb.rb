@@ -1,7 +1,6 @@
-require "dashamailrb/version"
+require "DashaMailRb/version"
 
-require "dashamailrb/api_exception"
-require "dashamailrb/model"
-require "dashamailrb/member"
-require "dashamailrb/list"
-require "dashamailrb/dashamail"
+module DashaMailRb
+  class Error < StandardError; end
+  # Your code goes here...
+end

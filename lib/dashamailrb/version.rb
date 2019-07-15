@@ -1,3 +1,3 @@
-module Dashamailrb
-  VERSION = "0.0.1"
+module DashaMailRb
+  VERSION = "0.1.0"
 end
