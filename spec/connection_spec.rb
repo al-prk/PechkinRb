@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Pechkin::Connection do
-  let(:connection) { Pechkin::Connection.new('1', '2') }
+describe Dashamail::Connection do
+  let(:connection) { Dashamail::Connection.new('1', '2') }
 
   before(:each) do
     stub_connection = Faraday.new do |builder|
@@ -50,11 +50,11 @@ describe Pechkin::Connection do
     end
 
     it "raises error when bad response received" do
-      expect { connection.call_method('get_bad', {param: 'value'}) }.to raise_error(Pechkin::ApiException)
+      expect { connection.call_method('get_bad', {param: 'value'}) }.to raise_error(Dashamail::ApiException)
     end
 
     it "raises no_data error when bad response received" do
-      expect { connection.call_method('get_none', {param: 'value'}) }.to raise_error(Pechkin::NoDataException)
+      expect { connection.call_method('get_none', {param: 'value'}) }.to raise_error(Dashamail::NoDataException)
     end
   end
 end
